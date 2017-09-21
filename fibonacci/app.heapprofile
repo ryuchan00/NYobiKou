@@ -1,0 +1,370 @@
+events: ms hits
+summary: 0 8
+fl=
+fn=setSamplingInterval :0
+0 0 0
+
+fl=/home/vagrant/.nodebrew/node/v6.11.3/lib/node_modules/nodegrind/node_modules/v8-profiler/v8-profiler.js
+fn=startProfiling v8-profiler.js:199
+199 0 0
+cfi=
+cfn=setSamplingInterval :0
+calls=0 0
+199 0 0
+
+fl=/home/vagrant/.nodebrew/node/v6.11.3/lib/node_modules/nodegrind/nodegrind.js
+fn=startCPU nodegrind.js:84
+84 0 0
+cfi=/home/vagrant/.nodebrew/node/v6.11.3/lib/node_modules/nodegrind/node_modules/v8-profiler/v8-profiler.js
+cfn=startProfiling v8-profiler.js:199
+calls=0 199
+84 0 0
+
+fl=
+fn=lstat :0
+0 0 1
+
+fl=fs.js
+fn=fs.lstatSync fs.js:993
+993 0 0
+cfi=
+cfn=lstat :0
+calls=0 0
+993 0 1
+
+fl=fs.js
+fn=realpathSync fs.js:1606
+1606 0 0
+cfi=fs.js
+cfn=fs.lstatSync fs.js:993
+calls=0 993
+1606 0 1
+
+fl=module.js
+fn=toRealPath module.js:132
+132 0 0
+cfi=fs.js
+cfn=realpathSync fs.js:1606
+calls=0 1606
+132 0 1
+
+fl=module.js
+fn=Module._findPath module.js:151
+151 0 0
+cfi=module.js
+cfn=toRealPath module.js:132
+calls=0 132
+151 0 1
+
+fl=module.js
+fn=Module._resolveFilename module.js:455
+455 0 0
+cfi=module.js
+cfn=Module._findPath module.js:151
+calls=0 151
+455 0 1
+
+fl=bootstrap_node.js
+fn=runInThisContext bootstrap_node.js:398
+398 0 1
+
+fl=bootstrap_node.js
+fn=NativeModule.compile bootstrap_node.js:478
+478 0 0
+cfi=bootstrap_node.js
+cfn=runInThisContext bootstrap_node.js:398
+calls=0 398
+478 0 1
+cfi=tty.js
+cfn= tty.js:1
+calls=0 1
+478 0 1
+cfi=console.js
+cfn= console.js:1
+calls=0 1
+478 0 3
+
+fl=bootstrap_node.js
+fn=NativeModule.require bootstrap_node.js:414
+414 0 0
+cfi=bootstrap_node.js
+cfn=NativeModule.compile bootstrap_node.js:478
+calls=0 478
+414 0 5
+
+fl=tty.js
+fn= tty.js:1
+1 0 0
+cfi=bootstrap_node.js
+cfn=NativeModule.require bootstrap_node.js:414
+calls=0 414
+1 0 1
+
+fl=_stream_duplex.js
+fn=Duplex _stream_duplex.js:23
+23 0 1
+
+fl=net.js
+fn=Socket net.js:125
+125 0 1
+cfi=_stream_duplex.js
+cfn=Duplex _stream_duplex.js:23
+calls=0 23
+125 0 1
+
+fl=tty.js
+fn=WriteStream tty.js:43
+43 0 0
+cfi=net.js
+cfn=Socket net.js:125
+calls=0 125
+43 0 2
+
+fl=internal/process/stdio.js
+fn=createWritableStdioStream stdio.js:134
+134 0 0
+cfi=bootstrap_node.js
+cfn=NativeModule.require bootstrap_node.js:414
+calls=0 414
+134 0 1
+cfi=tty.js
+cfn=WriteStream tty.js:43
+calls=0 43
+134 0 2
+
+fl=internal/process/stdio.js
+fn=getStdout stdio.js:8
+8 0 0
+cfi=internal/process/stdio.js
+cfn=createWritableStdioStream stdio.js:134
+calls=0 134
+8 0 3
+
+fl=console.js
+fn= console.js:1
+1 0 0
+cfi=internal/process/stdio.js
+cfn=getStdout stdio.js:8
+calls=0 8
+1 0 3
+
+fl=bootstrap_node.js
+fn=get bootstrap_node.js:252
+252 0 0
+cfi=bootstrap_node.js
+cfn=NativeModule.require bootstrap_node.js:414
+calls=0 414
+252 0 3
+
+fl=util.js
+fn=inspect util.js:168
+168 0 1
+
+fl=util.js
+fn=exports.format util.js:67
+67 0 0
+cfi=util.js
+cfn=inspect util.js:168
+calls=0 168
+67 0 1
+
+fl=net.js
+fn=createWriteReq net.js:733
+733 0 3
+
+fl=net.js
+fn=Socket._writeGeneric net.js:661
+661 0 0
+cfi=net.js
+cfn=createWriteReq net.js:733
+calls=0 733
+661 0 3
+
+fl=net.js
+fn=Socket._write net.js:729
+729 0 0
+cfi=net.js
+cfn=Socket._writeGeneric net.js:661
+calls=0 661
+729 0 3
+
+fl=_stream_writable.js
+fn=doWrite _stream_writable.js:323
+323 0 0
+cfi=net.js
+cfn=Socket._write net.js:729
+calls=0 729
+323 0 3
+
+fl=_stream_writable.js
+fn=writeOrBuffer _stream_writable.js:292
+292 0 0
+cfi=_stream_writable.js
+cfn=doWrite _stream_writable.js:323
+calls=0 323
+292 0 3
+
+fl=_stream_writable.js
+fn=Writable.write _stream_writable.js:221
+221 0 0
+cfi=_stream_writable.js
+cfn=writeOrBuffer _stream_writable.js:292
+calls=0 292
+221 0 3
+
+fl=net.js
+fn=Socket.write net.js:652
+652 0 0
+cfi=_stream_writable.js
+cfn=Writable.write _stream_writable.js:221
+calls=0 221
+652 0 3
+
+fl=console.js
+fn=Console.log console.js:42
+42 0 0
+cfi=util.js
+cfn=exports.format util.js:67
+calls=0 67
+42 0 1
+cfi=net.js
+cfn=Socket.write net.js:652
+calls=0 652
+42 0 3
+
+fl=/home/vagrant/workspace/fibonacci/app.js
+fn= app.js:1
+1 0 0
+cfi=bootstrap_node.js
+cfn=get bootstrap_node.js:252
+calls=0 252
+1 0 3
+cfi=console.js
+cfn=Console.log console.js:42
+calls=0 42
+1 0 4
+
+fl=module.js
+fn=Module._compile module.js:510
+510 0 0
+cfi=/home/vagrant/workspace/fibonacci/app.js
+cfn= app.js:1
+calls=0 1
+510 0 7
+cfi=/home/vagrant/.nodebrew/node/v6.11.3/lib/node_modules/nodegrind/nodegrind.js
+cfn= nodegrind.js:1
+calls=0 1
+510 0 8
+
+fl=module.js
+fn=Module._extensions..js module.js:577
+577 0 0
+cfi=module.js
+cfn=Module._compile module.js:510
+calls=0 510
+577 0 15
+
+fl=module.js
+fn=Module.load module.js:478
+478 0 0
+cfi=module.js
+cfn=Module._extensions..js module.js:577
+calls=0 577
+478 0 15
+
+fl=module.js
+fn=tryModuleLoad module.js:443
+443 0 0
+cfi=module.js
+cfn=Module.load module.js:478
+calls=0 478
+443 0 15
+
+fl=module.js
+fn=Module._load module.js:412
+412 0 0
+cfi=module.js
+cfn=Module._resolveFilename module.js:455
+calls=0 455
+412 0 1
+cfi=module.js
+cfn=tryModuleLoad module.js:443
+calls=0 443
+412 0 15
+
+fl=module.js
+fn=Module.require module.js:494
+494 0 0
+cfi=module.js
+cfn=Module._load module.js:412
+calls=0 412
+494 0 8
+
+fl=internal/module.js
+fn=require module.js:17
+17 0 0
+cfi=module.js
+cfn=Module.require module.js:494
+calls=0 494
+17 0 8
+
+fl=/home/vagrant/.nodebrew/node/v6.11.3/lib/node_modules/nodegrind/nodegrind.js
+fn=main nodegrind.js:100
+100 0 0
+cfi=/home/vagrant/.nodebrew/node/v6.11.3/lib/node_modules/nodegrind/nodegrind.js
+cfn=startCPU nodegrind.js:84
+calls=0 84
+100 0 0
+cfi=internal/module.js
+cfn=require module.js:17
+calls=0 17
+100 0 8
+
+fl=/home/vagrant/.nodebrew/node/v6.11.3/lib/node_modules/nodegrind/nodegrind.js
+fn= nodegrind.js:1
+1 0 0
+cfi=/home/vagrant/.nodebrew/node/v6.11.3/lib/node_modules/nodegrind/nodegrind.js
+cfn=main nodegrind.js:100
+calls=0 100
+1 0 8
+
+fl=module.js
+fn=Module.runMain module.js:602
+602 0 0
+cfi=module.js
+cfn=Module._load module.js:412
+calls=0 412
+602 0 8
+
+fl=bootstrap_node.js
+fn=run bootstrap_node.js:370
+370 0 0
+cfi=module.js
+cfn=Module.runMain module.js:602
+calls=0 602
+370 0 8
+
+fl=bootstrap_node.js
+fn=startup bootstrap_node.js:12
+12 0 0
+cfi=bootstrap_node.js
+cfn=run bootstrap_node.js:370
+calls=0 370
+12 0 8
+
+fl=bootstrap_node.js
+fn= bootstrap_node.js:10
+10 0 0
+cfi=bootstrap_node.js
+cfn=startup bootstrap_node.js:12
+calls=0 12
+10 0 8
+
+fl=
+fn=(root) :0
+0 0 0
+cfi=bootstrap_node.js
+cfn= bootstrap_node.js:10
+calls=0 10
+0 0 8
+
