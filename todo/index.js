@@ -73,5 +73,3 @@ module.exports = {
     donelist: donelist,
     del: del
 };
-
-function severnteen
