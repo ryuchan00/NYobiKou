@@ -20,3 +20,5 @@ function isMultipleOfSeventeen(number) {
 module.exports = {
     isMultipleOfSeventeen: isMultipleOfSeventeen
 };
+
+// yo hubot --owner="yamakawa00 <leo0210leo@gmail.com>" --name="hubot-todo" --description="Test Bot" --adapter=slack
