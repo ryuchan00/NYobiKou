@@ -46,3 +46,7 @@ Listening on 8000
 [Tue Sep 26 2017 01:49:03 GMT+0000 (UTC)] Client Error { Error: Parse Error
     at Error (native) bytesParsed: 0, code: 'HPE_INVALID_METHOD' }
 Tue Sep 26 2017 01:51:27 GMT+0000 (UTC)Listening on 8000
+[Tue Sep 26 2017 01:52:17 GMT+0000 (UTC)] Client Error { Error: Parse Error
+    at Error (native) bytesParsed: 0, code: 'HPE_INVALID_METHOD' }
+[Tue Sep 26 2017 01:56:01 GMT+0000 (UTC)] Client Error { Error: Parse Error
+    at Error (native) bytesParsed: 0, code: 'HPE_INVALID_METHOD' }
