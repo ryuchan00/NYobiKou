@@ -125,8 +125,25 @@ describe('/schedules/:scedleId/uers/:userId/candidates/:candateId', () => {
                             .send({availability: 2}) // 出席に更新
                             .expect('{"status":"OK","availability":2}')
                             .end((err, res) => {
-                                deleteScheduleAggregate(scheduleId, done, err);
+                                Availability.findAll({
+                                    where: { scheduleId: scheduleId }
+                                }).then((availabilities) => {
+                                    // TODO ここにテストを記述する
+                                    // console.log(availabilities);
+                                    // console.log(availabilities[0].candidateId);
+                                    // console.log(availabilities[0].userId);
+                                    // console.log(availabilities[0].availability);
+                                    // console.log(availabilities.length);
+                                    // assert(availabilities.length, 1);
+                                    assert.equal(availabilities.length, 1);
+                                    assert.equal(availabilities[0].availability, 2);
+                                    deleteScheduleAggregate(scheduleId, done, err);
+                                });
                             });
+
+                        // .end((err, res) => {
+                            //     deleteScheduleAggregate(scheduleId, done, err);
+                            // });
                     });
                 });
         });
