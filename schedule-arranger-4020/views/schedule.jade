@@ -32,8 +32,8 @@ block content
                     td
                         p(id="self-comment") #{commentMap.get(user.userId)}
                         button(id="self-comment-button"
-                        data - schedule - id = "#{schedule.scheduleId}"
-                        data - user - id = "#{user.userId}") 編集
+                        data-schedule-id = "#{schedule.scheduleId}"
+                        data-user-id = "#{user.userId}") 編集
                 else
                     td
                         p #{commentMap.get(user.userId)}
