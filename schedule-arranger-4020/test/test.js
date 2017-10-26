@@ -162,39 +162,39 @@ describe('/schedules/:scheduleId/users/:userId/comments', () => {
     });
 });
 
-function deleteScheduleAggregate2(scheduleId, done, err) {
-    const processCommentDestory = Comment.findAll({
-        where: {scheduleId: scheduleId}
-    }).then((comments) => {
-        comments.map((c) => {
-            return c.destroy();
-        });
-    });
-
-    Availability.findAll({
-        where: {scheduleId: scheduleId}
-    }).then((availabilities) => {
-        const promises = availabilities.map((a) => {
-            return a.destroy();
-        });
-        Promise.all(promises).then(() => {
-            Candidate.findAll({
-                where: {scheduleId: scheduleId}
-            }).then((candidates) => {
-                const promises = candidates.map((c) => {
-                    return c.destroy();
-                });
-                Promise.all(promises).then(() => {
-                    Schedule.findById(scheduleId).then((s) => {
-                        s.destroy();
-                    });
-                    if (err) return done(err);
-                    done();
-                });
-            });
-        });
-    });
-}
+// function deleteScheduleAggregate2(scheduleId, done, err) {
+//     const processCommentDestory = Comment.findAll({
+//         where: {scheduleId: scheduleId}
+//     }).then((comments) => {
+//         comments.map((c) => {
+//             return c.destroy();
+//         });
+//     });
+//
+//     Availability.findAll({
+//         where: {scheduleId: scheduleId}
+//     }).then((availabilities) => {
+//         const promises = availabilities.map((a) => {
+//             return a.destroy();
+//         });
+//         Promise.all(promises).then(() => {
+//             Candidate.findAll({
+//                 where: {scheduleId: scheduleId}
+//             }).then((candidates) => {
+//                 const promises = candidates.map((c) => {
+//                     return c.destroy();
+//                 });
+//                 Promise.all(promises).then(() => {
+//                     Schedule.findById(scheduleId).then((s) => {
+//                         s.destroy();
+//                     });
+//                     if (err) return done(err);
+//                     done();
+//                 });
+//             });
+//         });
+//     });
+// }
 
 function deleteScheduleAggregate(scheduleId, done, err) {
     const promiseCommentDestroy = Comment.findAll({
