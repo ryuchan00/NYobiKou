@@ -23,16 +23,17 @@ router.post('/', authenticationEnsurer, (req, res, next) => {
         createdBy: req.user.id,
         updatedAt: updatedAt
     }).then((schedule) => {
-        const candidateNames = req.body.candidates.trim().split('\n').map((s) => s.trim());
-        const candidates = candidateNames.map((c) => {
-            return {
-                candidateName: c,
-                scheduleId: schedule.scheduleId
-            };
-        });
-        Candidate.bulkCreate(candidates).then(() => {
-            res.redirect('/schedules/' + schedule.scheduleId);
-        });
+        // const candidateNames = req.body.candidates.trim().split('\n').map((s) => s.trim());
+        // const candidates = candidateNames.map((c) => {
+        //     return {
+        //         candidateName: c,
+        //         scheduleId: schedule.scheduleId
+        //     };
+        // });
+        // Candidate.bulkCreate(candidates).then(() => {
+        //     res.redirect('/schedules/' + schedule.scheduleId);
+        // });
+        createCandidatesAndRedirect(parseCandidateNames(req), scheduleId, res)
     });
 });
 
