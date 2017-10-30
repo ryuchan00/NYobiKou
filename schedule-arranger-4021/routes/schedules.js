@@ -159,4 +159,16 @@ function isMine(req, schedule) {
     return schedule && parseInt(schedule.createdBy) === parseInt(req.user.id);
 }
 
+router.post('/:scheduleId', authenticationEnsurer, (req, res, next) => {
+    if (parseInt(req.query.edit) === 1) {
+        where: {
+            scheduleId: req.params.scheduleId
+        }
+    }).
+    then((schedule) => {
+
+    });
+
+});
+
 module.exports = router;
