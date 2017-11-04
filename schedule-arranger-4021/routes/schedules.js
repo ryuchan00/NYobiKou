@@ -194,12 +194,75 @@ function isMine(req, schedule) {
                 next(err);
             }
         });
+<<<<<<< HEAD
+=======
+    } else if (parseInt(req.query.delete) === 1) {
+        deleteScheduleAggregate(req.params.scheduleId, () => {
+            res.redirect('/');
+        });
+>>>>>>> db73da877f0e3d1ecc5630a78b5c6d8668a1ac7d
     } else {
         const err = new Error('不正なリクエストです');
         err.status = 400;
         next(err);
     }
 });
+
+<<<<<<< HEAD
+function createCandidatesAndRedirect(candidateNames, scheduleId, res) {
+    const candidates = candidateNames.map((c) => {
+        return {
+            candidateName: c,
+            scheduleId: scheduleId
+        };
+    });
+    Candidate.bulkCreate(candidates).then(() => {
+        res.redirect('/schedules/' + scheduleId);
+=======
+function deleteScheduleAggregate(scheduleId, done, err) {
+    const promiseCommentDestroy = Comment.findAll({
+        where: {scheduleId: scheduleId}
+    }).then((comments) => {
+        return Promise.all(comments.map((c) => {
+            return c.destroy();
+        }));
+>>>>>>> db73da877f0e3d1ecc5630a78b5c6d8668a1ac7d
+    });
+}
+
+<<<<<<< HEAD
+function parseCandidateNames(req) {
+    return req.body.candidates.trim().split('\n').map((s) => s.trim());
+}
+=======
+    Availability.findAll({
+        where: {scheduleId: scheduleId}
+    }).then((availabilities) => {
+        const promises = availabilities.map((a) => {
+            return a.destroy();
+        });
+        return Promise.all(promises);
+    }).then(() => {
+        return Candidate.findAll({
+            where: {scheduleId: scheduleId}
+        });
+    }).then((candidates) => {
+        const promises = candidates.map((c) => {
+            return c.destroy();
+        });
+        promises.push(promiseCommentDestroy);
+        return Promise.all(promises);
+    }).then(() => {
+        return Schedule.findById(scheduleId).then((s) => {
+            return s.destroy();
+        });
+    }).then(() => {
+        if (err) return done(err);
+        done();
+    });
+}
+
+router.deleteScheduleAggregate = deleteScheduleAggregate;
 
 function createCandidatesAndRedirect(candidateNames, scheduleId, res) {
     const candidates = candidateNames.map((c) => {
@@ -216,5 +279,7 @@ function createCandidatesAndRedirect(candidateNames, scheduleId, res) {
 function parseCandidateNames(req) {
     return req.body.candidates.trim().split('\n').map((s) => s.trim());
 }
+
+>>>>>>> db73da877f0e3d1ecc5630a78b5c6d8668a1ac7d
 
 module.exports = router;
