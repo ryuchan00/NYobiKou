@@ -23,16 +23,6 @@ router.post('/', authenticationEnsurer, (req, res, next) => {
         createdBy: req.user.id,
         updatedAt: updatedAt
     }).then((schedule) => {
-        // const candidateNames = req.body.candidates.trim().split('\n').map((s) => s.trim());
-        // const candidates = candidateNames.map((c) => {
-        //     return {
-        //         candidateName: c,
-        //         scheduleId: schedule.scheduleId
-        //     };
-        // });
-        // Candidate.bulkCreate(candidates).then(() => {
-        //     res.redirect('/schedules/' + schedule.scheduleId);
-        // });
         createCandidatesAndRedirect(parseCandidateNames(req), scheduleId, res)
     });
 });
@@ -159,7 +149,7 @@ function isMine(req, schedule) {
     return schedule && parseInt(schedule.createdBy) === parseInt(req.user.id);
 }
 
-+router.post('/:scheduleId', authenticationEnsurer, (req, res, next) => {
+router.post('/:scheduleId', authenticationEnsurer, (req, res, next) => {
     if (parseInt(req.query.edit) === 1) {
         Schedule.findOne({
             where: {
@@ -194,13 +184,10 @@ function isMine(req, schedule) {
                 next(err);
             }
         });
-<<<<<<< HEAD
-=======
     } else if (parseInt(req.query.delete) === 1) {
         deleteScheduleAggregate(req.params.scheduleId, () => {
             res.redirect('/');
         });
->>>>>>> db73da877f0e3d1ecc5630a78b5c6d8668a1ac7d
     } else {
         const err = new Error('不正なリクエストです');
         err.status = 400;
@@ -208,17 +195,6 @@ function isMine(req, schedule) {
     }
 });
 
-<<<<<<< HEAD
-function createCandidatesAndRedirect(candidateNames, scheduleId, res) {
-    const candidates = candidateNames.map((c) => {
-        return {
-            candidateName: c,
-            scheduleId: scheduleId
-        };
-    });
-    Candidate.bulkCreate(candidates).then(() => {
-        res.redirect('/schedules/' + scheduleId);
-=======
 function deleteScheduleAggregate(scheduleId, done, err) {
     const promiseCommentDestroy = Comment.findAll({
         where: {scheduleId: scheduleId}
@@ -226,15 +202,8 @@ function deleteScheduleAggregate(scheduleId, done, err) {
         return Promise.all(comments.map((c) => {
             return c.destroy();
         }));
->>>>>>> db73da877f0e3d1ecc5630a78b5c6d8668a1ac7d
     });
-}
 
-<<<<<<< HEAD
-function parseCandidateNames(req) {
-    return req.body.candidates.trim().split('\n').map((s) => s.trim());
-}
-=======
     Availability.findAll({
         where: {scheduleId: scheduleId}
     }).then((availabilities) => {
@@ -279,7 +248,5 @@ function createCandidatesAndRedirect(candidateNames, scheduleId, res) {
 function parseCandidateNames(req) {
     return req.body.candidates.trim().split('\n').map((s) => s.trim());
 }
-
->>>>>>> db73da877f0e3d1ecc5630a78b5c6d8668a1ac7d
 
 module.exports = router;
