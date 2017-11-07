@@ -334,3 +334,4 @@ function deleteScheduleAggregate(scheduleId, done, err) {
         done();
     });
 }
+
