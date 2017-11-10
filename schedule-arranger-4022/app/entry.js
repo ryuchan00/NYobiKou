@@ -24,7 +24,7 @@ $('.availability-toggle-button').each((i, e) => {
                 button.addClass(buttonStyles[data.availability]);
 
                 const tdAvailabilityClasses = ['bg-danger', 'bg-default', 'bg-success'];
-                button.parent().removeClass('bg-danger bg-default bg-success');
+                button.parent().removeClass('bg-danger bg-default bg-success');t
                 button.parent().addClass(tdAvailabilityClasses[data.availability]);
             });
     });
